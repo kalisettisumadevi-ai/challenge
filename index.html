@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Education Dashboard</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #2f4050;
+      color: #fff;
+      padding: 20px;
+      flex-shrink: 0;
+      transition: width 0.3s ease;
+    }
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 22px;
+      text-align: center;
+    }
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      padding: 12px 15px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      transition: background 0.2s;
+    }
+    .sidebar a:hover {
+      background: #1ab394;
+      color: #fff;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topbar */
+    .topbar {
+      background: #fff;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .topbar input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    .topbar .user {
+      font-weight: 500;
+    }
+
+    /* Dashboard Content */
+    .content {
+      padding: 25px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Toggle Button (for small screens) */
+    .toggle-btn {
+      display: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: absolute;
+        left: -240px;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+      }
+      .sidebar.open {
+        left: 0;
+      }
+      .toggle-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>EduDash</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Courses</a>
+    <a href="#">Students</a>
+    <a href="#">Assignments</a>
+    <a href="#">Grades</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+      <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
+      <input type="text" placeholder="Search..." />
+      <div class="user">👩‍🏫 Admin</div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <div class="card">
+        <h3>Total Students</h3>
+        <p>1,245 enrolled</p>
+      </div>
+      <div class="card">
+        <h3>Active Courses</h3>
+        <p>23 ongoing courses</p>
+      </div>
+      <div class="card">
+        <h3>Pending Assignments</h3>
+        <p>128 submissions pending</p>
+      </div>
+      <div class="card">
+        <h3>Messages</h3>
+        <p>5 unread messages</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
+
